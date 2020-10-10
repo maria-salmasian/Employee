@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new NotFoundException("Employee not found for this id :: " + id));
         return employee;
 
-        
+
     }
 
     /**
