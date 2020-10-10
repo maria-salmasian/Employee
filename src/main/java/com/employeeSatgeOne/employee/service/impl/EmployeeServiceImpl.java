@@ -55,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee saveEmployee(Employee employee) throws NotFoundException {
         if (employee != null)
             return employeeRepository.save(employee);
-        else throw new NotFoundException("employee not found to be saved");
+        else throw new NotFoundException("employee not found to save");
     }
 
 
