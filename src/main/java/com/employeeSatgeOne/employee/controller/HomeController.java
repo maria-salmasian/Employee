@@ -18,12 +18,23 @@ public class HomeController {
     private EmployeeService employeeService;
 
 
+    /**
+     *
+     * @return
+     * @throws NotFoundException
+     */
     @GetMapping()
     public ResponseEntity<List<Employee>> getAllPlanets() throws NotFoundException {
         List<Employee> planetList = employeeService.getEmployees();
         return new ResponseEntity<>(planetList, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws NotFoundException
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Employee> getPlanetById(@PathVariable("id")  int id) throws NotFoundException {
         Employee employee = employeeService.getEmployeeByID(id);
@@ -31,6 +42,12 @@ public class HomeController {
     }
 
 
+    /**
+     *
+     * @param employee
+     * @return
+     * @throws NotFoundException
+     */
     @PostMapping()
     public ResponseEntity<Employee> savePlanet(
             @RequestBody   Employee employee) throws NotFoundException {
@@ -39,6 +56,13 @@ public class HomeController {
     }
 
 
+    /**
+     *
+     * @param id
+     * @param employee
+     * @return
+     * @throws NotFoundException
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updatePlanetById(
             @PathVariable("id")  int id,
@@ -50,6 +74,12 @@ public class HomeController {
     }
 
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws NotFoundException
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePlanetById(
             @PathVariable("id")  int id) throws NotFoundException {

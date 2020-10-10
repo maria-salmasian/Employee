@@ -17,6 +17,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
 
+    /**
+     *
+     * @return
+     * @throws NotFoundException
+     */
     @Override
     public LinkedList<Employee> getEmployees() throws NotFoundException {
         LinkedList<Employee> listEmp=new LinkedList<>();
@@ -26,12 +31,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         else throw new NotFoundException("No employees found");
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws NotFoundException
+     */
     @Override
     public Employee getEmployeeByID(int id) throws NotFoundException {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new NotFoundException("Employee not found for this id :: " + id));
         return employee;
     }
 
+    /**
+     *
+     * @param employee
+     * @return
+     * @throws NotFoundException
+     */
     @Override
     public Employee saveEmployee(Employee employee) throws NotFoundException {
         if (employee != null)
@@ -40,6 +57,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
+    /**
+     *
+     * @param id
+     * @param initEmployee
+     * @return
+     * @throws NotFoundException
+     */
     @Override
     public Employee updateEmployeeByID(int id, Employee initEmployee) throws NotFoundException {
         Employee employeeDB = employeeRepository.findById(id).orElseThrow(() ->
@@ -56,6 +80,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+
+    /**
+     *
+     * @param id
+     * @throws NotFoundException
+     */
     @Override
     public void deleteEmployeeByID(int id) throws NotFoundException {
         Employee employee = employeeRepository.findById(id)
